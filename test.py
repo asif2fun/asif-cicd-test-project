@@ -1,7 +1,3 @@
 print("Hello World")
-
-a =  "Hello"
-
-
-
+a = "Hello"
 print (a) 
