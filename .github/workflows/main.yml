@@ -46,9 +46,10 @@ jobs:
       - name: Restore NuGet packages
         run: dotnet restore src/solution.sln  # Adjust path if needed
 
-      - name: Run StyleCop analysis
-        run: dotnet stylecop src/solution.sln --rule-set=Rules.ruleset
-        working-directory: ./  # Adjust working directory if needed
+      - name: Run StyleCop analysis with logging
+        run: |
+          dotnet stylecop src/solution.sln --rule-set=Rules.ruleset &> stylecop_analysis.log
+          cat stylecop_analysis.log
 
       - name: Lint Code Base 
         uses: github/super-linter@v4
