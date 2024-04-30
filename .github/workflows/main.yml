@@ -51,6 +51,14 @@ jobs:
           dotnet stylecop src/solution.sln --rule-set=Rules.ruleset &> stylecop_analysis.log
           cat stylecop_analysis.log
 
+      - name: (Optional) Fail workflow on StyleCop violations
+        run: |
+          dotnet stylecop src/solution.sln --rule-set=Rules.ruleset
+          if [ $? -ne 0 ]; then
+              exit 1
+          fi
+        # Uncomment this step if you want to fail the workflow on StyleCop errors
+
       - name: Lint Code Base 
         uses: github/super-linter@v4
         env:
