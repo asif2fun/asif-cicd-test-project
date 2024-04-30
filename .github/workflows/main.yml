@@ -21,10 +21,10 @@ jobs:
           fetch-depth: 0 # Full git history needed for super-linter
      
       - name: Restore NuGet packages
-        run: dotnet restore src  # Adjust path to your solution file
+        run: dotnet restore src/solution.sln  # Adjust path to your solution file
 
       - name: Run StyleCop analysis
-        run: dotnet stylecop src --rule-set=Rules.ruleset
+        run: dotnet stylecop src/solution.sln --rule-set=Rules.ruleset
         working-directory: ./  # Adjust working directory if needed
           
       - name: Lint Code Base 
